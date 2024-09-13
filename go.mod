@@ -1,4 +1,4 @@
-module mini_url
+module zadanie-6105
 
 go 1.21
 

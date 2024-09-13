@@ -25,20 +25,6 @@ type repo struct {
 	db *pgxpool.Pool
 }
 
-//func NewPool(connURL string) (*pgxpool.Pool, error) {
-//	config, err := pgxpool.ParseConfig(connURL)
-//	if err != nil {
-//		return nil, fmt.Errorf("unable to parse connection URL. %s", err)
-//	}
-//
-//	pool, err := pgxpool.NewWithConfig(context.Background(), config)
-//	if err != nil {
-//		return nil, fmt.Errorf("unable to create connection pool: %w", err)
-//	}
-//
-//	return pool, nil
-//}
-
 func NewRepository(db *pgxpool.Pool) repository.TenderRepository {
 	return &repo{db: db}
 }
@@ -63,6 +49,7 @@ func (r *repo) Create(ctx context.Context, t *models.Tender) (*models.Tender, er
 	//	log.Printf("error in QueryRow, err : %v\n", err)
 	//	return nil, err
 	//}
+
 	query := `
 		INSERT INTO tenders (
 			name, 
